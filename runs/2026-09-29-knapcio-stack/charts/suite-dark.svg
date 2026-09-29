@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="376" viewBox="0 0 900 376" role="img" aria-label="Single-stream decode by prompt, 500K lane (tok/s, median of 3)">
+<rect width="900" height="376" fill="#1a1a19"/>
+<text x="24.0" y="30.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="16" fill="#ffffff" text-anchor="start" font-weight="600">Single-stream decode by prompt, 500K lane (tok/s, median of 3)</text>
+<text x="24.0" y="50.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="start" font-weight="normal">knapcio stack, 4x DGX Spark TP4, temperature 0, reasoning_effort low</text>
+<line x1="150.0" x2="150.0" y1="64" y2="324" stroke="#383835" stroke-width="1"/>
+<text x="150.0" y="340.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">0</text>
+<line x1="315.0" x2="315.0" y1="64" y2="324" stroke="#2c2c2a" stroke-width="1"/>
+<text x="315.0" y="340.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">50</text>
+<line x1="480.0" x2="480.0" y1="64" y2="324" stroke="#2c2c2a" stroke-width="1"/>
+<text x="480.0" y="340.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">100</text>
+<line x1="645.0" x2="645.0" y1="64" y2="324" stroke="#2c2c2a" stroke-width="1"/>
+<text x="645.0" y="340.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">150</text>
+<line x1="810.0" x2="810.0" y1="64" y2="324" stroke="#2c2c2a" stroke-width="1"/>
+<text x="810.0" y="340.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">200</text>
+<text x="140.0" y="82.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">count to 100 *</text>
+<path d="M150,69.0 H745.6 Q749.6,69.0 749.6,73.0 V81.0 Q749.6,85.0 745.6,85.0 H150 Z" fill="#3987e5"/>
+<text x="755.6" y="82.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">181.7</text>
+<text x="140.0" y="108.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">count to 300 *</text>
+<path d="M150,95.0 H692.8 Q696.8,95.0 696.8,99.0 V107.0 Q696.8,111.0 692.8,111.0 H150 Z" fill="#3987e5"/>
+<text x="702.8" y="108.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">165.7</text>
+<text x="140.0" y="134.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">tool call</text>
+<path d="M150,121.0 H720.2 Q724.2,121.0 724.2,125.0 V133.0 Q724.2,137.0 720.2,137.0 H150 Z" fill="#3987e5"/>
+<text x="730.2" y="134.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">174.0</text>
+<text x="140.0" y="160.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">math</text>
+<path d="M150,147.0 H613.9 Q617.9,147.0 617.9,151.0 V159.0 Q617.9,163.0 613.9,163.0 H150 Z" fill="#3987e5"/>
+<text x="623.9" y="160.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">141.8</text>
+<text x="140.0" y="186.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">code</text>
+<path d="M150,173.0 H543.6 Q547.6,173.0 547.6,177.0 V185.0 Q547.6,189.0 543.6,189.0 H150 Z" fill="#3987e5"/>
+<text x="553.6" y="186.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">120.5</text>
+<text x="140.0" y="212.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">json</text>
+<path d="M150,199.0 H543.6 Q547.6,199.0 547.6,203.0 V211.0 Q547.6,215.0 543.6,215.0 H150 Z" fill="#3987e5"/>
+<text x="553.6" y="212.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">120.5</text>
+<text x="140.0" y="238.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">sql</text>
+<path d="M150,225.0 H506.0 Q510.0,225.0 510.0,229.0 V237.0 Q510.0,241.0 506.0,241.0 H150 Z" fill="#3987e5"/>
+<text x="516.0" y="238.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">109.1</text>
+<text x="140.0" y="264.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">summary</text>
+<path d="M150,251.0 H379.0 Q383.0,251.0 383.0,255.0 V263.0 Q383.0,267.0 379.0,267.0 H150 Z" fill="#3987e5"/>
+<text x="389.0" y="264.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">70.6</text>
+<text x="140.0" y="290.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">prose</text>
+<path d="M150,277.0 H347.3 Q351.3,277.0 351.3,281.0 V289.0 Q351.3,293.0 347.3,293.0 H150 Z" fill="#3987e5"/>
+<text x="357.3" y="290.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">61.0</text>
+<text x="140.0" y="316.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="end" font-weight="normal">narrative</text>
+<path d="M150,303.0 H346.6 Q350.6,303.0 350.6,307.0 V315.0 Q350.6,319.0 346.6,319.0 H150 Z" fill="#3987e5"/>
+<text x="356.6" y="316.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="start" font-weight="600">60.8</text>
+<text x="24.0" y="368.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="start" font-weight="normal">* counting prompts are the draft-acceptance ceiling, not a typical rate. Speed-night harness (bench_tp2_night.py), 2026-09-29.</text>
+</svg>

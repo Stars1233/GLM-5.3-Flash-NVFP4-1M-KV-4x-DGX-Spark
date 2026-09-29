@@ -1,0 +1,10 @@
+{"kind": "prose", "conc": 4, "per_stream_mean": 31.0, "per_stream_min": 30.4, "sum_per_stream": 124.1, "wall_aggregate": 119.5, "ttft_mean": 0.43, "ttft_max": 0.506, "tokens": 3072, "fffd": 0}
+{"kind": "code", "conc": 4, "per_stream_mean": 48.3, "per_stream_min": 46.7, "sum_per_stream": 193.2, "wall_aggregate": 182.8, "ttft_mean": 0.35, "ttft_max": 0.458, "tokens": 3072, "fffd": 0}
+{"kind": "json", "conc": 4, "per_stream_mean": 58.9, "per_stream_min": 56.4, "sum_per_stream": 235.5, "wall_aggregate": 221.7, "ttft_mean": 0.26, "ttft_max": 0.262, "tokens": 3072, "fffd": 0}
+{"kind": "prose", "conc": 8, "per_stream_mean": 20.9, "per_stream_min": 20.4, "sum_per_stream": 167.3, "wall_aggregate": 160.7, "ttft_mean": 0.53, "ttft_max": 0.566, "tokens": 6144, "fffd": 0}
+{"kind": "code", "conc": 8, "per_stream_mean": 30.5, "per_stream_min": 29.4, "sum_per_stream": 244.2, "wall_aggregate": 231.3, "ttft_mean": 0.45, "ttft_max": 0.525, "tokens": 6144, "fffd": 0}
+{"kind": "json", "conc": 8, "per_stream_mean": 36.1, "per_stream_min": 34.4, "sum_per_stream": 288.8, "wall_aggregate": 270.7, "ttft_mean": 0.36, "ttft_max": 0.366, "tokens": 6144, "fffd": 0}
+{"kind": "prose", "conc": 16, "per_stream_mean": 13.9, "per_stream_min": 13.3, "sum_per_stream": 223.1, "wall_aggregate": 214.5, "ttft_mean": 0.78, "ttft_max": 0.858, "tokens": 12112, "fffd": 0}
+{"kind": "code", "conc": 16, "per_stream_mean": 18.9, "per_stream_min": 18.5, "sum_per_stream": 302.8, "wall_aggregate": 292.2, "ttft_mean": 0.62, "ttft_max": 0.701, "tokens": 12288, "fffd": 0}
+{"kind": "json", "conc": 16, "per_stream_mean": 22.3, "per_stream_min": 21.6, "sum_per_stream": 356.4, "wall_aggregate": 339.5, "ttft_mean": 0.63, "ttft_max": 0.657, "tokens": 12288, "fffd": 0}
+DONE

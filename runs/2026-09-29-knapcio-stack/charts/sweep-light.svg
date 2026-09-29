@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-label="Aggregate throughput, mixed real prompts, 500K lane (tok/s)">
+<rect width="900" height="330" fill="#fcfcfb"/>
+<text x="24.0" y="30.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="16" fill="#0b0b0b" text-anchor="start" font-weight="600">Aggregate throughput, mixed real prompts, 500K lane (tok/s)</text>
+<text x="24.0" y="52.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal">8 prompt types rotated across streams (no counting), peak of 3 rounds</text>
+<line x1="64" x2="824" y1="270.0" y2="270.0" stroke="#c3c2b7" stroke-width="1"/>
+<text x="56.0" y="274.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">0</text>
+<line x1="64" x2="824" y1="225.0" y2="225.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56.0" y="229.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">50</text>
+<line x1="64" x2="824" y1="180.0" y2="180.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56.0" y="184.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">100</text>
+<line x1="64" x2="824" y1="135.0" y2="135.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56.0" y="139.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">150</text>
+<line x1="64" x2="824" y1="90.0" y2="90.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56.0" y="94.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">200</text>
+<text x="64.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C1</text>
+<text x="216.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C2</text>
+<text x="368.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C3</text>
+<text x="520.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C4</text>
+<text x="672.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C5</text>
+<text x="824.0" y="288.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#898781" text-anchor="middle" font-weight="normal">C6</text>
+<polyline points="64.0,165.2 216.0,132.7 368.0,129.8 520.0,124.1 672.0,111.5 824.0,138.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="64.0" cy="165.2" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="216.0" cy="132.7" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="368.0" cy="129.8" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="520.0" cy="124.1" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="672.0" cy="111.5" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="824.0" cy="138.2" r="4" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="836.0" cy="138.2" r="3.5" fill="#2a78d6"/>
+<text x="843.0" y="142.2" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#0b0b0b" text-anchor="start" font-weight="600">146</text>
+<text x="24.0" y="322.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="start" font-weight="normal">knapcio stack, 4x DGX Spark TP4, temperature 0, reasoning_effort low, clock cap 2200 MHz. Speed-night harness, 2026-09-29.</text>
+</svg>

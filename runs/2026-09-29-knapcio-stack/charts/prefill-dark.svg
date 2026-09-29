@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="318" viewBox="0 0 900 318" role="img" aria-label="Cold prefill, previous recipe vs knapcio&#x27;s stack (tok/s)">
+<rect width="900" height="318" fill="#1a1a19"/>
+<text x="24.0" y="30.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="16" fill="#ffffff" text-anchor="start" font-weight="600">Cold prefill, previous recipe vs knapcio&#x27;s stack (tok/s)</text>
+<rect x="24" y="47" width="12" height="12" rx="3" fill="#3987e5"/>
+<text x="41.0" y="57.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="start" font-weight="normal">knapcio stack</text>
+<rect x="156.60000000000002" y="47" width="12" height="12" rx="3" fill="#d95926"/>
+<text x="173.6" y="57.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="12" fill="#c3c2b7" text-anchor="start" font-weight="normal">previous recipe</text>
+<line x1="64" x2="864" y1="260.0" y2="260.0" stroke="#383835" stroke-width="1"/>
+<text x="56.0" y="264.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">0</text>
+<line x1="64" x2="864" y1="217.5" y2="217.5" stroke="#2c2c2a" stroke-width="1"/>
+<text x="56.0" y="221.5" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">1,000</text>
+<line x1="64" x2="864" y1="175.0" y2="175.0" stroke="#2c2c2a" stroke-width="1"/>
+<text x="56.0" y="179.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">2,000</text>
+<line x1="64" x2="864" y1="132.5" y2="132.5" stroke="#2c2c2a" stroke-width="1"/>
+<text x="56.0" y="136.5" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">3,000</text>
+<line x1="64" x2="864" y1="90.0" y2="90.0" stroke="#2c2c2a" stroke-width="1"/>
+<text x="56.0" y="94.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">4,000</text>
+<path d="M140.3,260.0 V177.5 Q140.3,173.5 144.3,173.5 H192.3 Q196.3,173.5 196.3,177.5 V260.0 Z" fill="#d95926"/>
+<text x="168.3" y="167.5" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="normal">2,035</text>
+<path d="M198.3,260.0 V153.2 Q198.3,149.2 202.3,149.2 H250.3 Q254.3,149.2 254.3,153.2 V260.0 Z" fill="#3987e5"/>
+<text x="226.3" y="143.2" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">2,607</text>
+<text x="197.3" y="278.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#c3c2b7" text-anchor="middle" font-weight="normal">8K prompt</text>
+<text x="197.3" y="294.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">+28%</text>
+<path d="M407.0,260.0 V177.3 Q407.0,173.3 411.0,173.3 H459.0 Q463.0,173.3 463.0,177.3 V260.0 Z" fill="#d95926"/>
+<text x="435.0" y="167.3" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="normal">2,039</text>
+<path d="M465.0,260.0 V146.3 Q465.0,142.3 469.0,142.3 H517.0 Q521.0,142.3 521.0,146.3 V260.0 Z" fill="#3987e5"/>
+<text x="493.0" y="136.3" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">2,770</text>
+<text x="464.0" y="278.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#c3c2b7" text-anchor="middle" font-weight="normal">32K prompt</text>
+<text x="464.0" y="294.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">+36%</text>
+<path d="M673.7,260.0 V177.8 Q673.7,173.8 677.7,173.8 H725.7 Q729.7,173.8 729.7,177.8 V260.0 Z" fill="#d95926"/>
+<text x="701.7" y="167.8" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="normal">2,028</text>
+<path d="M731.7,260.0 V145.6 Q731.7,141.6 735.7,141.6 H783.7 Q787.7,141.6 787.7,145.6 V260.0 Z" fill="#3987e5"/>
+<text x="759.7" y="135.6" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">2,786</text>
+<text x="730.7" y="278.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#c3c2b7" text-anchor="middle" font-weight="normal">64K prompt</text>
+<text x="730.7" y="294.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">+37%</text>
+<text x="24.0" y="310.0" font-family="system-ui,-apple-system,Segoe UI,sans-serif" font-size="10" fill="#898781" text-anchor="start" font-weight="normal">Salted prompts (no cache hits), 1 output token, median of 2 (knapcio prefill_bench.py). 2026-09-29.</text>
+</svg>

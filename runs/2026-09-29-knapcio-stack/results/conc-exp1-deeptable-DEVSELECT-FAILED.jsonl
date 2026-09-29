@@ -1,0 +1,13 @@
+{"kind": "prose", "conc": 1, "per_stream_mean": 32.8, "per_stream_min": 32.8, "sum_per_stream": 32.8, "wall_aggregate": 32.6, "ttft_mean": 0.21, "ttft_max": 0.21, "tokens": 768, "fffd": 0}
+{"kind": "code", "conc": 1, "per_stream_mean": 89.6, "per_stream_min": 89.6, "sum_per_stream": 89.6, "wall_aggregate": 87.7, "ttft_mean": 0.19, "ttft_max": 0.191, "tokens": 768, "fffd": 0}
+{"kind": "json", "conc": 1, "per_stream_mean": 97.3, "per_stream_min": 97.3, "sum_per_stream": 97.3, "wall_aggregate": 95.1, "ttft_mean": 0.19, "ttft_max": 0.191, "tokens": 768, "fffd": 0}
+{"kind": "prose", "conc": 4, "per_stream_mean": 25.9, "per_stream_min": 25.1, "sum_per_stream": 103.5, "wall_aggregate": 99.3, "ttft_mean": 0.35, "ttft_max": 0.369, "tokens": 3072, "fffd": 0}
+{"kind": "code", "conc": 4, "per_stream_mean": 47.5, "per_stream_min": 43.3, "sum_per_stream": 189.9, "wall_aggregate": 171.9, "ttft_mean": 0.4, "ttft_max": 0.507, "tokens": 3072, "fffd": 0}
+{"kind": "json", "conc": 4, "per_stream_mean": 56.5, "per_stream_min": 52.5, "sum_per_stream": 226.1, "wall_aggregate": 206.2, "ttft_mean": 0.29, "ttft_max": 0.29, "tokens": 3072, "fffd": 0}
+{"kind": "prose", "conc": 8, "per_stream_mean": 19.4, "per_stream_min": 18.4, "sum_per_stream": 155.0, "wall_aggregate": 146.1, "ttft_mean": 0.44, "ttft_max": 0.454, "tokens": 6144, "fffd": 0}
+{"kind": "code", "conc": 8, "per_stream_mean": 29.1, "per_stream_min": 28.2, "sum_per_stream": 232.5, "wall_aggregate": 221.5, "ttft_mean": 0.5, "ttft_max": 0.592, "tokens": 6144, "fffd": 0}
+{"kind": "json", "conc": 8, "per_stream_mean": 36.0, "per_stream_min": 34.3, "sum_per_stream": 288.3, "wall_aggregate": 269.1, "ttft_mean": 0.45, "ttft_max": 0.454, "tokens": 6144, "fffd": 0}
+{"kind": "prose", "conc": 16, "per_stream_mean": 13.2, "per_stream_min": 12.9, "sum_per_stream": 211.7, "wall_aggregate": 199.5, "ttft_mean": 0.59, "ttft_max": 0.596, "tokens": 11931, "fffd": 0}
+{"kind": "code", "conc": 16, "per_stream_mean": 18.3, "per_stream_min": 17.8, "sum_per_stream": 293.1, "wall_aggregate": 280.4, "ttft_mean": 0.64, "ttft_max": 0.734, "tokens": 12288, "fffd": 0}
+{"kind": "json", "conc": 16, "per_stream_mean": 21.2, "per_stream_min": 20.4, "sum_per_stream": 338.6, "wall_aggregate": 320.9, "ttft_mean": 0.67, "ttft_max": 0.699, "tokens": 12288, "fffd": 0}
+DONE
