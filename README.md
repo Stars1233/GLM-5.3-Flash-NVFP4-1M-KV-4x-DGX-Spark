@@ -129,14 +129,50 @@ Harness: this repo's speed-night suite ([`bench/bench_tp2_night.py`](runs/2026-0
 
 - **Censored checkpoint.** This stack runs `nvidia/GLM-5.3-Flash-NVFP4`. The uncensored Blackfrost lane stays on
   the previous recipe (below) until his 8-bit conversion is tested on those weights.
-- **Thinking is on by default** (`reasoning_effort: high`) and the chat template has no off switch. Send
-  `"chat_template_kwargs": {"reasoning_effort": "low"}` for short answers. The previous recipe had thinking off.
+- **Thinking cannot be switched off** in this chat template; it takes `reasoning_effort` low, high or max. The fleet
+  and both lane configs default to **low** (next section: same eval score, faster answers). The previous recipe had
+  thinking off.
 - **500K is our setting, not his.** He validates at 262K. Past that we have one needle test per length (below)
   and a 498,636-token cold prefill, not a long-context quality evaluation.
 - **Single RoCE rail.** He runs two; our second port is addressed on two of four nodes. Prefill lands at the low
   end of what his published gains predict, consistent with that.
 - **Keep every draft depth 1 to 7 in the spec table**, or device-side selection silently fails and single-stream
   speed drops by half (runbook §6).
+
+
+### Reasoning effort: the fleet serves at low (2026-09-29)
+
+*From the session that relaunched the fleet at `DEFAULT_EFFORT=low`; raw data in [`runs/2026-09-29-knapcio-effort-low/`](runs/2026-09-29-knapcio-effort-low/).*
+
+**Effort, not thinking.** The GLM-5.3 chat template in that stack takes `reasoning_effort` `low`, `high` or `max`
+(anything else becomes `max`). There is no thinking-off switch, and `enable_thinking: false` is ignored. We relaunched
+with `DEFAULT_EFFORT=low` (a request can still ask for `high` or `max` with `chat_template_kwargs`).
+
+**Tool-calling eval, 69 scenarios, same endpoint, same day** (our harness):
+
+| Server default effort | Quality | Pass / partial / fail | Median turn | Tokens used | Decode |
+|---|---:|---:|---:|---:|---:|
+| high | 92.8 | 63 / 2 / 4 | 771 ms | 63.3K | 70.1 tok/s |
+| **low** | **93.5** | 63 / 3 / 3 | **632 ms** | 60.4K | 69.5 tok/s |
+
+**Answer time, low vs high on the same boot** (5 prompts: margin math, code, a route, a summary, one-line arithmetic;
+request-level `reasoning_effort`, temperature 0):
+
+| Effort | Median per answer | Wall time, all 5 | Output tokens | Thinking text |
+|---|---:|---:|---:|---:|
+| **low** | **1.3 s** | **7.9 s** | 631 | 227 chars |
+| high | 1.8 s | 11.1 s | 978 | 602 chars |
+
+Decode speed is about the same at either effort; low finishes sooner because it thinks less before it answers. The
+largest gap was the route question, 1.4 s vs 3.7 s. Low scored the same or better on the eval, so it is our default.
+
+**Relaunching knapcio's stack with a new setting.** `./start.sh stop` keeps the containers, and `serve` refuses a
+container name or an overlay path that overlaps any existing container mount on any node. A new setting therefore
+needs a fresh `CTN` and a fresh `OVERLAY_REMOTE` (ours: `glm53kl`, `/srv/glm53-knapcio-low`; `/var/tmp` was out
+because an old container mounts all of it). Copying the old overlay's `cache/` first (as root; some of it is
+root-owned) gave a warm boot: `/health` 200 in about 200 s.
+
+Raw logs, the A/B script and our env file: [`runs/2026-09-29-knapcio-effort-low/`](runs/2026-09-29-knapcio-effort-low/).
 
 ---
 

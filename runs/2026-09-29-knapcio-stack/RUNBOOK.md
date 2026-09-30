@@ -98,7 +98,7 @@ node before `serve` again.
   `source profiles/current.env` in the env file does nothing. Put them on the command line
   (`TRUNC_COST=r12 ENV_FILE=env.500k bash start.sh serve`). Plain variables (`MAX_MODEL_LEN`,
   `PORT`, `SERVED_NAME`, `HOST_BIND`) can be overridden after the `source` line.
-- **Thinking is on by default** (`reasoning_effort: high`) and his chat template has no off switch.
+- **Thinking cannot be switched off** in his chat template (`reasoning_effort` low, high or max). Our env files set `DEFAULT_EFFORT=low`.
   Send `"chat_template_kwargs": {"reasoning_effort": "low"}` for short answers.
 - **Uncensored lane:** this stack runs on `nvidia/GLM-5.3-Flash-NVFP4` (censored). Whether his 8-bit
   conversion applies to the Blackfrost weights is untested; the uncensored lane stays on this repo's
