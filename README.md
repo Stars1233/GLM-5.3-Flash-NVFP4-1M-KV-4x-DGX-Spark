@@ -1,19 +1,5 @@
 # GLM-5.3-Flash · DFlash2 · TP4 · 1M Context · 3.9M-Token KV
 
-> 🔀 **Only have two Sparks?** The same images run at TP2 (262K context) — see the sibling repo:
-> **[GLM-5.3-Flash NVFP4 + DFlash2 · 2x DGX Spark →](https://github.com/tonyd2wild/GLM-5.3-Flash-NVFP4-DFlash2-2x-DGX-Spark)**
-
-[zai-org/GLM-5.3-Flash](https://huggingface.co/zai-org/GLM-5.3-Flash) (320B / A18B MoE)
-serving across **all four NVIDIA DGX Spark (GB10) nodes** at tensor-parallel 4, with the
-[`incoai/GLM-5.3-Flash-DFlash2`](https://huggingface.co/incoai/GLM-5.3-Flash-DFlash2)
-block-diffusion drafter.
-
-**Current default (2026-09-29): [knapcio's stack](https://github.com/knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4), run
-unmodified on this fleet, with a 500,000-token window** on a 3,453,703-token KV pool, and a 262K lane beside it. On the
-same hardware, harness and day as our previous recipe: prose decode +36% to +57% at every concurrency, cold prefill +28%
-to +37%, repeated-prompt TTFT about 3× faster. The stack is knapcio's; the lane configs and measurements are ours. The
-uncensored Blackfrost lane stays on the previous recipe for now, which is documented below unchanged.
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/suite-dark.svg">
   <img alt="Single-stream decode on the 500K lane: count to 100 181.7, count to 300 165.7, tool call 174.0, math 141.8, code 120.5, json 120.5, sql 109.1, summary 70.6, prose 61.0, narrative 60.8 tok/s." src="runs/2026-09-29-knapcio-stack/charts/suite-light.svg" width="880">
@@ -35,6 +21,20 @@ uncensored Blackfrost lane stays on the previous recipe for now, which is docume
 | narrative | **60.8** (2.03) | 59.0 (1.98) |
 
 ¹ The counting prompts are the draft-acceptance ceiling, not a typical rate. ² 34 output tokens.
+
+> 🔀 **Only have two Sparks?** The same images run at TP2 (262K context) — see the sibling repo:
+> **[GLM-5.3-Flash NVFP4 + DFlash2 · 2x DGX Spark →](https://github.com/tonyd2wild/GLM-5.3-Flash-NVFP4-DFlash2-2x-DGX-Spark)**
+
+[zai-org/GLM-5.3-Flash](https://huggingface.co/zai-org/GLM-5.3-Flash) (320B / A18B MoE)
+serving across **all four NVIDIA DGX Spark (GB10) nodes** at tensor-parallel 4, with the
+[`incoai/GLM-5.3-Flash-DFlash2`](https://huggingface.co/incoai/GLM-5.3-Flash-DFlash2)
+block-diffusion drafter.
+
+**Current default (2026-09-29): [knapcio's stack](https://github.com/knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4), run
+unmodified on this fleet, with a 500,000-token window** on a 3,453,703-token KV pool, and a 262K lane beside it. On the
+same hardware, harness and day as our previous recipe: prose decode +36% to +57% at every concurrency, cold prefill +28%
+to +37%, repeated-prompt TTFT about 3× faster. The stack is knapcio's; the lane configs and measurements are ours. The
+uncensored Blackfrost lane stays on the previous recipe for now, which is documented below unchanged.
 
 ---
 
