@@ -1,0 +1,12 @@
+low     1.3s   105 tok   80.2 tok/s  thinking 97 chars | A store buys shoes at $62 and sells at $140. 
+high    1.8s   161 tok   87.8 tok/s  thinking 133 chars | A store buys shoes at $62 and sells at $140. 
+low     1.2s   150 tok  126.4 tok/s  thinking 0 chars | Write a Python function that returns the long
+high    1.6s   213 tok  129.7 tok/s  thinking 38 chars | Write a Python function that returns the long
+low     1.4s   125 tok   90.8 tok/s  thinking 75 chars | Plan a 3-stop delivery route: warehouse A to 
+high    3.7s   289 tok   77.5 tok/s  thinking 263 chars | Plan a 3-stop delivery route: warehouse A to 
+low     3.1s   171 tok   56.0 tok/s  thinking 0 chars | Summarize in 3 bullets why speculative decodi
+high    2.4s   172 tok   71.0 tok/s  thinking 0 chars | Summarize in 3 bullets why speculative decodi
+low     1.0s    80 tok   82.6 tok/s  thinking 55 chars | If 3,798 pairs sell at 44.5%, how many pairs 
+high    1.4s   143 tok   98.8 tok/s  thinking 168 chars | If 3,798 pairs sell at 44.5%, how many pairs 
+== low: total 7.9s, 631 tokens, median 1.3s/answer, 79.9 tok/s, thinking 227 chars
+== high: total 11.1s, 978 tokens, median 1.8s/answer, 88.3 tok/s, thinking 602 chars
