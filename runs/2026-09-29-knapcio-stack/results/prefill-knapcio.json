@@ -1,0 +1,77 @@
+[
+ {
+  "size": 8192,
+  "cold": [
+   {
+    "prompt_tokens": 8380,
+    "ttft_s": 3.217,
+    "prefill_tps": 2605.0,
+    "kind": "cold"
+   },
+   {
+    "prompt_tokens": 8379,
+    "ttft_s": 3.212,
+    "prefill_tps": 2608.6,
+    "kind": "cold"
+   }
+  ],
+  "cold_median_tps": 2606.8,
+  "cold_median_ttft": 3.2145,
+  "replay": {
+   "prompt_tokens": 8379,
+   "ttft_s": 0.706,
+   "prefill_tps": 11866.4,
+   "kind": "replay"
+  }
+ },
+ {
+  "size": 32768,
+  "cold": [
+   {
+    "prompt_tokens": 33577,
+    "ttft_s": 12.123,
+    "prefill_tps": 2769.6,
+    "kind": "cold"
+   },
+   {
+    "prompt_tokens": 33579,
+    "ttft_s": 12.119,
+    "prefill_tps": 2770.7,
+    "kind": "cold"
+   }
+  ],
+  "cold_median_tps": 2770.1499999999996,
+  "cold_median_ttft": 12.120999999999999,
+  "replay": {
+   "prompt_tokens": 33579,
+   "ttft_s": 0.703,
+   "prefill_tps": 47770.1,
+   "kind": "replay"
+  }
+ },
+ {
+  "size": 65536,
+  "cold": [
+   {
+    "prompt_tokens": 67305,
+    "ttft_s": 24.16,
+    "prefill_tps": 2785.7,
+    "kind": "cold"
+   },
+   {
+    "prompt_tokens": 67305,
+    "ttft_s": 24.153,
+    "prefill_tps": 2786.6,
+    "kind": "cold"
+   }
+  ],
+  "cold_median_tps": 2786.1499999999996,
+  "cold_median_ttft": 24.1565,
+  "replay": {
+   "prompt_tokens": 67305,
+   "ttft_s": 0.481,
+   "prefill_tps": 139845.4,
+   "kind": "replay"
+  }
+ }
+]

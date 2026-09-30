@@ -1,0 +1,151 @@
+{
+ "decode": {
+  "kind": "decode",
+  "title": "Decode throughput, previous recipe vs knapcio's stack (tok/s, aggregate)",
+  "types": [
+   "prose",
+   "code",
+   "json"
+  ],
+  "levels": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "new_label": "knapcio stack",
+  "old_label": "previous recipe",
+  "new": {
+   "prose": [
+    62.7,
+    89.0,
+    121.0,
+    162.7,
+    214.7
+   ],
+   "code": [
+    116.6,
+    134.1,
+    181.6,
+    231.9,
+    286.9
+   ],
+   "json": [
+    129.5,
+    160.7,
+    222.7,
+    277.6,
+    336.1
+   ]
+  },
+  "old": {
+   "prose": [
+    43.5,
+    59.9,
+    76.9,
+    114.8,
+    157.8
+   ],
+   "code": [
+    101.8,
+    119.0,
+    163.9,
+    217.4,
+    315.4
+   ],
+   "json": [
+    110.4,
+    136.0,
+    170.0,
+    241.6,
+    337.5
+   ]
+  },
+  "note": "4x DGX Spark TP4, GPU clock cap 2200 MHz, temp 0, 768 tokens, 32 distinct prompts per type (knapcio conc_bench.py). Best of 2 runs per cell. 2026-09-29."
+ },
+ "prefill": {
+  "kind": "prefill",
+  "title": "Cold prefill, previous recipe vs knapcio's stack (tok/s)",
+  "cats": [
+   "8K prompt",
+   "32K prompt",
+   "64K prompt"
+  ],
+  "new_label": "knapcio stack",
+  "old_label": "previous recipe",
+  "new": [
+   2607,
+   2770,
+   2786
+  ],
+  "old": [
+   2035,
+   2039,
+   2028
+  ],
+  "delta": [
+   "+28%",
+   "+36%",
+   "+37%"
+  ],
+  "note": "Salted prompts (no cache hits), 1 output token, median of 2 (knapcio prefill_bench.py). 2026-09-29."
+ },
+ "suite": {
+  "kind": "suite",
+  "title": "GLM-5.3-Flash, 4x DGX Spark TP4: decode speed by prompt type (tok/s, single stream)",
+  "sub": "knapcio stack, 500K lane, temperature 0, reasoning_effort low, median of 3",
+  "cats": [
+   "count to 100 (peak) *",
+   "count to 300 *",
+   "tool call",
+   "math",
+   "code",
+   "json",
+   "sql",
+   "summary",
+   "prose",
+   "narrative"
+  ],
+  "vals": [
+   181.7,
+   165.7,
+   174.0,
+   141.8,
+   120.5,
+   120.5,
+   109.1,
+   70.6,
+   61.0,
+   60.8
+  ],
+  "note": "* counting prompts show the speculative-decoding ceiling, not a typical rate. Speed-night harness, 2026-09-29. Clock cap 2200 MHz."
+ },
+ "sweep": {
+  "kind": "sweep",
+  "title": "Aggregate throughput, mixed real prompts, 500K lane (tok/s)",
+  "sub": "8 prompt types rotated across streams (no counting), peak of 3 rounds",
+  "x": [
+   "C1",
+   "C2",
+   "C3",
+   "C4",
+   "C5",
+   "C6"
+  ],
+  "series": [
+   [
+    "500K lane",
+    [
+     116.5,
+     152.6,
+     155.8,
+     162.1,
+     176.1,
+     146.5
+    ]
+   ]
+  ],
+  "note": "knapcio stack, 4x DGX Spark TP4, temperature 0, reasoning_effort low, clock cap 2200 MHz. Speed-night harness, 2026-09-29."
+ }
+}

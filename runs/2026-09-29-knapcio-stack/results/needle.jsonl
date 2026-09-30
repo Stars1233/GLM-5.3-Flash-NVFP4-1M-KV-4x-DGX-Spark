@@ -1,0 +1,2 @@
+{"label": "knapcio262k-240k", "prompt_tokens": 243917, "ttft_s": 91.6, "prefill_tok_s": 2662, "needles_found": "3/3", "answer": "falcon=92210 orchid=21740 granite=46180", "error": null}
+{"label": "knapcio500k-470k", "prompt_tokens": 480203, "ttft_s": 225.3, "prefill_tok_s": 2132, "needles_found": "3/3", "answer": "falcon=67344 orchid=70757 granite=79237", "error": null}

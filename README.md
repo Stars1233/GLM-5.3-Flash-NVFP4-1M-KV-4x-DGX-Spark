@@ -1,5 +1,27 @@
 # GLM-5.3-Flash · DFlash2 · TP4 · 1M Context · 3.9M-Token KV
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/suite-dark.svg">
+  <img alt="Single-stream decode on the 500K lane: count to 100 181.7, count to 300 165.7, tool call 174.0, math 141.8, code 120.5, json 120.5, sql 109.1, summary 70.6, prose 61.0, narrative 60.8 tok/s." src="runs/2026-09-29-knapcio-stack/charts/suite-light.svg" width="880">
+</picture>
+
+**Single-stream decode, tok/s** (median of 3; mean accepted draft length in brackets). Count to 100 is the peak.
+
+| prompt | 500K lane | 262K lane |
+|---|---|---|
+| count to 100 ¹ | **181.7** (7.26) | 183.2 (7.42) |
+| count to 300 ¹ | **165.7** (6.94) | 166.0 (6.91) |
+| tool call ² | **174.0** (6.80) | 173.1 (6.80) |
+| math | **141.8** (4.55) | 144.1 (4.54) |
+| code | **120.5** (5.08) | 120.3 (5.15) |
+| json | **120.5** (4.93) | 121.2 (4.91) |
+| sql | **109.1** (4.23) | 107.4 (4.25) |
+| summary | **70.6** (2.38) | 74.0 (2.48) |
+| prose | **61.0** (2.05) | 62.3 (2.10) |
+| narrative | **60.8** (2.03) | 59.0 (1.98) |
+
+¹ The counting prompts are the draft-acceptance ceiling, not a typical rate. ² 34 output tokens.
+
 > 🔀 **Only have two Sparks?** The same images run at TP2 (262K context) — see the sibling repo:
 > **[GLM-5.3-Flash NVFP4 + DFlash2 · 2x DGX Spark →](https://github.com/tonyd2wild/GLM-5.3-Flash-NVFP4-DFlash2-2x-DGX-Spark)**
 
@@ -8,19 +30,119 @@ serving across **all four NVIDIA DGX Spark (GB10) nodes** at tensor-parallel 4, 
 [`incoai/GLM-5.3-Flash-DFlash2`](https://huggingface.co/incoai/GLM-5.3-Flash-DFlash2)
 block-diffusion drafter.
 
-**Current defaults (2026-09-21):** two lanes off the same recipe, both 500,000-token window on a
-3,532,196-token fp8 KV pool, 43.76 GiB/rank. **Censored:** `nvidia/GLM-5.3-Flash-NVFP4`.
-**Uncensored:** `Blackfrost-AI/GLM-5.3-Flash-DERISKED-NVFP4` — operator-confirmed uncensored and coherent,
-and it measures at or above the censored lane on almost every cell. The 1M-context settings and the
-3.8M-token pool numbers below were measured on the earlier fp8/marlin lane and are labelled as such.
+**Current default (2026-09-29): [knapcio's stack](https://github.com/knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4), run
+unmodified on this fleet, with a 500,000-token window** on a 3,453,703-token KV pool, and a 262K lane beside it. On the
+same hardware, harness and day as our previous recipe: prose decode +36% to +57% at every concurrency, cold prefill +28%
+to +37%, repeated-prompt TTFT about 3× faster. The stack is knapcio's; the lane configs and measurements are ours. The
+uncensored Blackfrost lane stays on the previous recipe for now, which is documented below unchanged.
+
+---
+
+## ⭐ Current default (2026-09-29): knapcio's stack, 500K context
+
+The speed stack is **[knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4](https://github.com/knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4)**
+by [@knapcio](https://github.com/knapcio) (MIT). We run it **unmodified**, pinned at commit `770d115`, on our four
+Sparks. Two things are ours: the lane configs (500K default, 262K) and the measurements below. His stack is built on
+this repo's v11 image, its RoCE all-reduce port and its DFlash2 prefix-cache repair, and it credits them. The 8-bit
+dense layers that give it its largest single win start from this repo's finding that the nvidia checkpoint leaves
+18 GiB of non-expert weights in BF16. What he added is the rest: 8-bit dense kernels, certified LM head, draft-length
+truncation chosen on the GPU, FP8 drafter, prefill kernels, and about twenty more measured pieces.
+
+**Runbook, both lane configs, harness and raw results: [`runs/2026-09-29-knapcio-stack/`](runs/2026-09-29-knapcio-stack/).**
+
+| lane | context | KV pool | full-length requests that fit | config |
+|---|---|---|---|---|
+| **500K (default)** | 500,000 | **3,453,703 tokens** | 6.9 | `env.500k` |
+| 262K | 262,144 | 2,945,172 tokens | 11.2 | `env.262k` (knapcio's own context) |
+
+Both lanes serve `glm-5.3-flash` on `:8000`, the name and port this repo's earlier recipes used, so clients do
+not change. Weights: `nvidia/GLM-5.3-Flash-NVFP4` through his CPU conversion (50 s per node; config hashes match
+his published ones). Warm reboot: 3 to 4 minutes (the previous recipe: about 12).
+
+### Previous recipe vs knapcio's stack (same fleet, same day, same harness)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/decode-dark.svg">
+  <img alt="Decode throughput by concurrency. Prose: previous recipe 44/60/77/115/158, knapcio stack 63/89/121/163/215 tok/s at c1/c2/c4/c8/c16. Code: 102/119/164/217/315 vs 117/134/182/232/287. JSON: 110/136/170/242/338 vs 130/161/223/278/336." src="runs/2026-09-29-knapcio-stack/charts/decode-light.svg" width="880">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/prefill-dark.svg">
+  <img alt="Cold prefill: previous recipe 2,035 / 2,039 / 2,028 tok/s at 8K / 32K / 64K prompts, knapcio stack 2,607 / 2,770 / 2,786 (+28% / +36% / +37%)." src="runs/2026-09-29-knapcio-stack/charts/prefill-light.svg" width="880">
+</picture>
+
+| | previous recipe | knapcio stack | change |
+|---|---|---|---|
+| prose, 1 → 16 streams | 44 → 158 tok/s | 63 → 215 tok/s | **+36% to +57%** at every level |
+| code, 1 → 8 streams | 102 → 217 | 117 → 232 | +7% to +15% |
+| code, 16 streams | 315 | 287 | **−9%** |
+| json, 1 → 8 streams | 110 → 242 | 130 → 278 | +15% to +31% |
+| json, 16 streams | 338 | 336 | even |
+| cold prefill, 8K / 32K / 64K | 2,035 / 2,039 / 2,028 tok/s | 2,607 / 2,770 / 2,786 | **+28% / +36% / +37%** |
+| repeated-prompt TTFT (prefix cache) | 1.8 to 2.0 s | 0.5 to 0.7 s | about 3× faster |
+
+Harness: knapcio's own `bench/conc_bench.py` (32 distinct prompts per type, 768 tokens, temperature 0,
+`reasoning_effort: low`) and `bench/prefill_bench.py` (salted prompts), best of two runs per cell, both stacks warm,
+GPU clock cap 2200 MHz. The one regression is code at 16 streams: his scheduler caps draft depth at 3 for batches of
+3 to 27. Deeper tables and a `batch-max` scheduler did not move it (runbook §7).
+
+### Full speed-night suite on the lanes
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/sweep-dark.svg">
+  <img alt="Aggregate throughput with mixed real prompts on the 500K lane, peak of 3 rounds: C1 116.5, C2 152.6, C3 155.8, C4 162.1, C5 176.1, C6 146.5 tok/s." src="runs/2026-09-29-knapcio-stack/charts/sweep-light.svg" width="880">
+</picture>
+
+**C1 to C6, mixed real prompts** (8 types rotated across streams, no counting; aggregate tok/s, median / peak of 3 rounds)
+
+| streams | 500K lane | 262K lane | per-stream decode (500K) | TTFT p90 (500K) |
+|---|---|---|---|---|
+| C1 | 115.4 / **116.5** | 115.2 / 117.1 | 119.8 | 0.26 s |
+| C2 | 103.4 / **152.6** | 98.6 / 151.2 | 90.8 | 2.03 s |
+| C3 | 104.5 / **155.8** | 105.5 / 160.9 | 59.5 | 2.43 s |
+| C4 | 159.9 / **162.1** | 162.3 / 163.4 | 56.5 | 0.63 s |
+| C5 | 134.5 / **176.1** | 111.3 / 180.2 | 42.2 | 2.96 s |
+| C6 | 141.2 / **146.5** | 108.8 / 125.0 | 36.1 | 3.46 s |
+
+Median and peak differ because each round sends a different mix of prompt types; zero failures and zero preemptions in every cell.
+
+**Cold prefill** (salted, 1 output token) **and long context**
+
+| | 500K lane | 262K lane |
+|---|---|---|
+| 5,943-token prompt | 2,378 tok/s (TTFT 2.5 s) | 2,404 tok/s (TTFT 2.5 s) |
+| 29,867-token prompt | 2,798 tok/s (TTFT 10.7 s) | 2,811 tok/s (TTFT 10.6 s) |
+| 113,911-token prompt | 2,794 tok/s (TTFT 40.8 s) | 2,782 tok/s (TTFT 41.0 s) |
+| **498,636-token prompt** | **2,462 tok/s (TTFT 203 s)** | over the 262K limit |
+| needle test (3 codes at 10/50/90% depth) | **3/3 at 480,203 tokens** (TTFT 225 s) | 3/3 at 243,917 tokens (TTFT 92 s) |
+| 114K-token prompts, 1 at once: decode per stream | 71.8 tok/s | 54.4 tok/s |
+| 114K-token prompts, 2 at once: decode per stream | 49.4 tok/s | 25.2 tok/s |
+
+Long-context rows are single runs, so the gap between the lanes there is not a lane effect; the two lanes run the
+same code and differ only in the context limit and pool size. Lowest free memory on any node during the 480K needle
+prompt: 18 GiB.
+
+Harness: this repo's speed-night suite ([`bench/bench_tp2_night.py`](runs/2026-09-29-knapcio-stack/bench/bench_tp2_night.py)), temperature 0,
+`reasoning_effort: low`, GPU clock cap 2200 MHz, 2026-09-29. Raw JSON: [`results/`](runs/2026-09-29-knapcio-stack/results/).
+
+### What to know before you switch
+
+- **Censored checkpoint.** This stack runs `nvidia/GLM-5.3-Flash-NVFP4`. The uncensored Blackfrost lane stays on
+  the previous recipe (below) until his 8-bit conversion is tested on those weights.
+- **Thinking cannot be switched off** in this chat template; it takes `reasoning_effort` low, high or max. The fleet
+  and both lane configs default to **low** (next section: same eval score, faster answers). The previous recipe had
+  thinking off.
+- **500K is our setting, not his.** He validates at 262K. Past that we have one needle test per length (below)
+  and a 498,636-token cold prefill, not a long-context quality evaluation.
+- **Single RoCE rail.** He runs two; our second port is addressed on two of four nodes. Prefill lands at the low
+  end of what his published gains predict, consistent with that.
+- **Keep every draft depth 1 to 7 in the spec table**, or device-side selection silently fails and single-stream
+  speed drops by half (runbook §6).
 
 
-## 2026-09-29 update: the fleet now serves knapcio's stack, reasoning effort low
+### Reasoning effort: the fleet serves at low (2026-09-29)
 
-As of 2026-09-29 our four Sparks serve GLM-5.3-Flash from **[knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4](https://github.com/knapcio/GLM-5.3-Flash-4x-DGX-Spark-TP4)**
-(commit 770d115, all credit to knapcio and the contributors listed in that repo): NVFP4 experts on Marlin, lossless
-8-bit dense layers, RoCE all-reduce, the fp8-block DFlash2 drafter and the LeversScheduler, 500K context on our switched
-fleet. The recipe in the rest of this README is the previous lane and stays valid; its exact replay is kept.
+*From the session that relaunched the fleet at `DEFAULT_EFFORT=low`; raw data in [`runs/2026-09-29-knapcio-effort-low/`](runs/2026-09-29-knapcio-effort-low/).*
 
 **Effort, not thinking.** The GLM-5.3 chat template in that stack takes `reasoning_effort` `low`, `high` or `max`
 (anything else becomes `max`). There is no thinking-off switch, and `enable_thinking: false` is ignored. We relaunched
@@ -54,7 +176,7 @@ Raw logs, the A/B script and our env file: [`runs/2026-09-29-knapcio-effort-low/
 
 ---
 
-## ⭐ Default checkpoint: `nvidia/GLM-5.3-Flash-NVFP4` plus NVFP4 attention (2026-09-20)
+## Previous default (2026-09-20 to 09-29): `nvidia/GLM-5.3-Flash-NVFP4` plus NVFP4 attention
 
 The default lane starts from [`nvidia/GLM-5.3-Flash-NVFP4`](https://huggingface.co/nvidia/GLM-5.3-Flash-NVFP4)
 (MIT, ungated) and applies our own NVFP4 quantization to the non-expert projections, 403 tensors that the
@@ -98,7 +220,7 @@ C12 (**+4.8% C12, +6.9% C16, +7.6% C24, +10.0% C32**). The two C1 outliers sit j
 opposite directions. Full tables, spreads and the discarded-data notes:
 [`runs/2026-09-20-nvidia-lanes/`](runs/2026-09-20-nvidia-lanes/).
 
-### ⭐ The uncensored lane: `blackfrost-glm53-derisked-attn` (2026-09-21)
+### The uncensored lane, still on this recipe: `blackfrost-glm53-derisked-attn` (2026-09-21)
 
 **Uncensored default.** Start from
 [`Blackfrost-AI/GLM-5.3-Flash-DERISKED-NVFP4`](https://huggingface.co/Blackfrost-AI/GLM-5.3-Flash-DERISKED-NVFP4)
@@ -222,6 +344,9 @@ step. **A config that boots and answers a short prompt is not a config that work
 ---
 
 ## Quickstart (4 nodes)
+
+> **This quickstart is the previous recipe** (and the uncensored Blackfrost lane). For the current default, knapcio's
+> stack at 500K, follow [`runs/2026-09-29-knapcio-stack/RUNBOOK.md`](runs/2026-09-29-knapcio-stack/RUNBOOK.md).
 
 One node owns the weights on local NVMe and NFS-exports them; the other three mount at the
 same path.
