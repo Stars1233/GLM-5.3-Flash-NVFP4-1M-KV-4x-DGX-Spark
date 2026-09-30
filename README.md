@@ -14,6 +14,28 @@ same hardware, harness and day as our previous recipe: prose decode +36% to +57%
 to +37%, repeated-prompt TTFT about 3× faster. The stack is knapcio's; the lane configs and measurements are ours. The
 uncensored Blackfrost lane stays on the previous recipe for now, which is documented below unchanged.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/suite-dark.svg">
+  <img alt="Single-stream decode on the 500K lane: count to 100 181.7, count to 300 165.7, tool call 174.0, math 141.8, code 120.5, json 120.5, sql 109.1, summary 70.6, prose 61.0, narrative 60.8 tok/s." src="runs/2026-09-29-knapcio-stack/charts/suite-light.svg" width="880">
+</picture>
+
+**Single-stream decode, tok/s** (median of 3; mean accepted draft length in brackets). Count to 100 is the peak.
+
+| prompt | 500K lane | 262K lane |
+|---|---|---|
+| count to 100 ¹ | **181.7** (7.26) | 183.2 (7.42) |
+| count to 300 ¹ | **165.7** (6.94) | 166.0 (6.91) |
+| tool call ² | **174.0** (6.80) | 173.1 (6.80) |
+| math | **141.8** (4.55) | 144.1 (4.54) |
+| code | **120.5** (5.08) | 120.3 (5.15) |
+| json | **120.5** (4.93) | 121.2 (4.91) |
+| sql | **109.1** (4.23) | 107.4 (4.25) |
+| summary | **70.6** (2.38) | 74.0 (2.48) |
+| prose | **61.0** (2.05) | 62.3 (2.10) |
+| narrative | **60.8** (2.03) | 59.0 (1.98) |
+
+¹ The counting prompts are the draft-acceptance ceiling, not a typical rate. ² 34 output tokens.
+
 ---
 
 ## ⭐ Current default (2026-09-29): knapcio's stack, 500K context
@@ -65,28 +87,6 @@ GPU clock cap 2200 MHz. The one regression is code at 16 streams: his scheduler 
 3 to 27. Deeper tables and a `batch-max` scheduler did not move it (runbook §7).
 
 ### Full speed-night suite on the lanes
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/suite-dark.svg">
-  <img alt="Single-stream decode on the 500K lane: count to 100 181.7, count to 300 165.7, tool call 174.0, math 141.8, code 120.5, json 120.5, sql 109.1, summary 70.6, prose 61.0, narrative 60.8 tok/s." src="runs/2026-09-29-knapcio-stack/charts/suite-light.svg" width="880">
-</picture>
-
-**Single stream** (decode tok/s, median of 3; mean accepted draft length in brackets)
-
-| prompt | 500K lane | 262K lane |
-|---|---|---|
-| count to 100 ¹ | **181.7** (7.26) | 183.2 (7.42) |
-| count to 300 ¹ | **165.7** (6.94) | 166.0 (6.91) |
-| code | **120.5** (5.08) | 120.3 (5.15) |
-| json | **120.5** (4.93) | 121.2 (4.91) |
-| sql | **109.1** (4.23) | 107.4 (4.25) |
-| tool call ² | **174.0** (6.80) | 173.1 (6.80) |
-| math | **141.8** (4.55) | 144.1 (4.54) |
-| prose | **61.0** (2.05) | 62.3 (2.10) |
-| narrative | **60.8** (2.03) | 59.0 (1.98) |
-| summary | **70.6** (2.38) | 74.0 (2.48) |
-
-¹ The counting prompts are the draft-acceptance ceiling, not a typical rate. ² 34 output tokens.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="runs/2026-09-29-knapcio-stack/charts/sweep-dark.svg">

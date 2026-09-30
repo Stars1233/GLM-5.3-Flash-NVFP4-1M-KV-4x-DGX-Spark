@@ -93,10 +93,10 @@
  },
  "suite": {
   "kind": "suite",
-  "title": "Single-stream decode by prompt, 500K lane (tok/s, median of 3)",
-  "sub": "knapcio stack, 4x DGX Spark TP4, temperature 0, reasoning_effort low",
+  "title": "GLM-5.3-Flash, 4x DGX Spark TP4: decode speed by prompt type (tok/s, single stream)",
+  "sub": "knapcio stack, 500K lane, temperature 0, reasoning_effort low, median of 3",
   "cats": [
-   "count to 100 *",
+   "count to 100 (peak) *",
    "count to 300 *",
    "tool call",
    "math",
@@ -119,7 +119,7 @@
    61.0,
    60.8
   ],
-  "note": "* counting prompts are the draft-acceptance ceiling, not a typical rate. Speed-night harness (bench_tp2_night.py), 2026-09-29."
+  "note": "* counting prompts show the speculative-decoding ceiling, not a typical rate. Speed-night harness, 2026-09-29. Clock cap 2200 MHz."
  },
  "sweep": {
   "kind": "sweep",
